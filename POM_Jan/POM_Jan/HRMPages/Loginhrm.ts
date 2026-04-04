@@ -1,4 +1,4 @@
-import {Page} from "@playwright/test";
+import { Page} from "@playwright/test";
 import {locators} from "../Data/locators";
 import dotenv from "dotenv";
 dotenv.config({path:"Data/qa.env"});
@@ -10,7 +10,7 @@ export class LoginPage {
 constructor (Lpage : Page){
 
   this.Gpage = Lpage;
-  
+   
 }
 
 async launchURl(){
