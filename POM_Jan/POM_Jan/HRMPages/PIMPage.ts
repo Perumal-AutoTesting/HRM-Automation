@@ -1,7 +1,7 @@
 import {faker} from "@faker-js/faker";
 import  {HomePage} from "./HomePage";
-import { locators } from "../Data/locators";
 import {empID} from "../Data/testData";
+import  {LoginPage} from "./Loginhrm"
 
 export class pimPage extends HomePage{
 
@@ -13,9 +13,9 @@ export class pimPage extends HomePage{
 
    async fillAddEmployeeForm(){
 
-    await this.Gpage.getByPlaceholder(locators.firstName).fill(faker.person.firstName());
-    await this.Gpage.getByPlaceholder(locators.lastName).fill(faker.person.lastName());
-    const EmployeeID = await this.Gpage.locator(locators.EmployeeID);
+    await this.Gpage.getByPlaceholder(this.locators.firstName).fill(faker.person.firstName());
+    await this.Gpage.getByPlaceholder(this.locators.lastName).fill(faker.person.lastName());
+    const EmployeeID = await this.Gpage.locator(this.locators.EmployeeID);
     await EmployeeID.clear();
     empID === faker.string.numeric(4);
     await EmployeeID.fill(empID);
@@ -24,7 +24,7 @@ export class pimPage extends HomePage{
 
    async clickAddEmployeeSubmitButton(){
 
-    await this.Gpage.locator(locators.EmployeeSubmitButton).click();
+    await this.Gpage.locator(this.locators.EmployeeSubmitButton).click();
   } 
 
 
@@ -36,7 +36,7 @@ export class pimPage extends HomePage{
 
 async enterEmployeeID(){
 
-  await this.Gpage.locator(locators.EmployeeIDField).fill(empID);
+  await this.Gpage.locator(this.locators.EmployeeIDField).fill(empID);
 
 }
 
@@ -49,13 +49,10 @@ async clickSearchButton(){
 
 async clickOnDeleteIcon(){
 
-  await this.Gpage.locator(locators.ClickOnDeleteIcon).click();
-  await this.Gpage.locator(locators.ClickYesOnDeleteConfirmation).click();
+  await this.Gpage.locator(this.locators.ClickOnDeleteIcon).click();
+  await this.Gpage.locator(this.locators.ClickYesOnDeleteConfirmation).click();
 
   
 }
-
-
-
 
 }
