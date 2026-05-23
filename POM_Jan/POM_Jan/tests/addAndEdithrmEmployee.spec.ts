@@ -1,13 +1,13 @@
 
-import { testRunner } from "../utility/customFixtures"; 
+import {testRunner} from "../utility/customFixtures";
 
-testRunner (`Add and Delete the HRM Employee`, async ({hrmPim, hrmlogin, hrmHome}) => {
+testRunner (`Add and Edit the HRM Employee`, async ({hrmPim, hrmlogin, hrmHome}) =>{
 
-testRunner.info().annotations.push(
+  testRunner.info().annotations.push(
 
-  {type : `TestCase`, description : `Add new employee and Delete the same employee in HRM `}
+    {type : `TestCase`, description: `Add new employee and Editing the same employee in HRM`}
+  );
 
-);
 await hrmlogin.launchURl();
 await hrmlogin.enterCredentials();
 await hrmlogin.clickLoginButton();
@@ -18,6 +18,6 @@ await hrmPim.clickAddEmployeeSubmitButton();
 await hrmPim.clickEmployeeList();
 await hrmPim.enterEmployeeID();
 await hrmPim.clickSearchButton();
-await hrmPim.clickOnDeleteIcon();
 
-})
+
+});

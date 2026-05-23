@@ -1,22 +1,41 @@
 
 import {pimPage} from "../HRMPages/PIMPage"
-
+import {LoginPage} from "../HRMPages/Loginhrm";
+import { HomePage } from "../HRMPages/HomePage";
 import {test as baseTest} from "@playwright/test";
 
 type myFixture = {
 
-   addAndDeleteEmployeeFix : pimPage;
+   hrmPim : pimPage
+   hrmlogin : LoginPage
+   hrmHome : HomePage
 
 }
-
 export const testRunner =  baseTest.extend<myFixture>( {
   
- addAndDeleteEmployeeFix : async ({page}, use) => {
+ hrmPim : async ({page}, use) => {
 
-   const addAndDeleteEmployee = new pimPage(page);
-   await use(addAndDeleteEmployee);
+   const hrmPim = new pimPage(page);
+   await use(hrmPim);
+ },
+
+ hrmlogin : async ({page}, use) => {
+
+  const hrmlogin = new LoginPage(page);
+  await use(hrmlogin);
+
+ },
+
+ hrmHome : async ({page}, use) => {
+
+  const hrmHome = new HomePage(page);
+  await use(hrmHome);
+
 
  }
+
+
+ 
 
 })
 
