@@ -1,23 +1,23 @@
 import { Page} from "@playwright/test";
+import {PlaywrightWrapper} from "../SupportingFile/playwright";
 import dotenv from "dotenv";
 dotenv.config({path:"Data/qa.env"});
 
-export class LoginPage {
+export class LoginPage extends PlaywrightWrapper{
 
-  Gpage : Page;
+async launchURL(URL :string){
 
-constructor (Lpage : Page){
-
-  this.Gpage = Lpage;
-   
-}
-
-async launchURl(){
+ try {
+  await this.Gpage.goto(URL);
+  console.log(`Successfully loaded the URL: ${URL}`);
   
-  console.log(process.env.HRM_BaseUrl);
-  await this.Gpage.goto(process.env.HRM_BaseUrl as string);
+ } catch (error) {
+  
+  console.log(`Error loading the page at ${URL}`);
+  throw new Error (`Failed to load the page at ${URL}`);
+ }
 
-}
+} 
 
 async enterCredentials(){
 

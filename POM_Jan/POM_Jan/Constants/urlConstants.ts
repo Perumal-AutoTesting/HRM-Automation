@@ -1,0 +1,7 @@
+
+
+export enum URLConstants {
+
+  HRM_BaseUrl = "https://opensource-demo.orangehrmlive.com/web/index.php/auth/login"
+
+}
