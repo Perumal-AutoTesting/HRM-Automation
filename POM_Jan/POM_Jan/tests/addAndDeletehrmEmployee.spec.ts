@@ -1,8 +1,6 @@
 
 import { testRunner } from "../utility/customFixtures"; 
-import {URLConstants} from "../Constants/urlConstants";
 
-const URL  = URLConstants.HRM_BaseUrl;
 
 testRunner (`Add and Delete the HRM Employee`, async ({hrmPim, hrmlogin, hrmHome}) => {
 
@@ -11,7 +9,7 @@ testRunner.info().annotations.push(
   {type : `TestCase`, description : `Add new employee and Delete the same employee in HRM `}
 
 );
-await hrmlogin.launchURL(URL);
+await hrmlogin.launchApplication();
 await hrmlogin.enterCredentials();
 await hrmlogin.clickLoginButton();
 await hrmHome.clickPIMLink();
