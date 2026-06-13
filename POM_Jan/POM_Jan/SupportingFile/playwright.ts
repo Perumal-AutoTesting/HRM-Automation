@@ -51,6 +51,7 @@ switch(attribute){
 
         throw new Error ("The 'fill' action is not supported for 'TITLE' attributes.");
     }
+    break;
 
   case "CLASS":
 
@@ -62,11 +63,26 @@ switch(attribute){
     }
     break;
 
+    case "PLACEHOLDER":
+
+    if(action === "fill"){
+
+      await this.Gpage.getByPlaceholder(locator).clear();
+      await this.Gpage.getByPlaceholder(locator).fill(data);
+
+    }else {
+
+        throw new Error ("The 'fill' action is not supported for 'PlaceHolder' attributes.");
+    }
+    break;
+
 
 }  
 
 
 }
+
+
 
 
 

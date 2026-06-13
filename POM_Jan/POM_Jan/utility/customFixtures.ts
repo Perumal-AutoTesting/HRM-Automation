@@ -13,22 +13,22 @@ type myFixture = {
 }
 export const testRunner =  baseTest.extend<myFixture>( {
   
- hrmPim : async ({page}, use) => {
+ hrmPim : async ({page,context}, use) => {
 
-   const hrmPim = new pimPage(page);
+   const hrmPim = new pimPage(page, context);
    await use(hrmPim);
  },
 
- hrmlogin : async ({page}, use) => {
+ hrmlogin : async ({page, context}, use) => {
 
-  const hrmlogin = new LoginPage(page);
+  const hrmlogin = new LoginPage(page, context);
   await use(hrmlogin);
 
  },
 
- hrmHome : async ({page}, use) => {
+ hrmHome : async ({page,context}, use) => {
 
-  const hrmHome = new HomePage(page);
+  const hrmHome = new HomePage(page,context);
   await use(hrmHome);
 
 

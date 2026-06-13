@@ -10,8 +10,6 @@ testRunner.info().annotations.push(
 
 );
 await hrmlogin.launchApplication();
-await hrmlogin.enterCredentials();
-await hrmlogin.clickLoginButton();
 await hrmHome.clickPIMLink();
 await hrmPim.clickAddEmployeeLink();
 await hrmPim.fillAddEmployeeForm();

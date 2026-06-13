@@ -1,6 +1,7 @@
 import { Page,BrowserContext} from "@playwright/test";
 import {PlaywrightWrapper} from "../SupportingFile/playwright";
 import {URLConstants} from "../Constants/urlConstants";
+import {credentials} from "../Constants/credentialsData";
 import dotenv from "dotenv";
 dotenv.config({path:"Data/qa.env"});
 
@@ -15,22 +16,21 @@ constructor(Lpage : Page, context : BrowserContext){
 async launchApplication(){
 
 await this.launchingURL(URLConstants.HRM_BaseUrl);
- 
-} 
+const pageTitle = await this.Gpage.title();
 
-async enterCredentials(){
+if(pageTitle.startsWith("OrangeHRM")){
 
-  await this.Gpage.getByPlaceholder(this.locators.Username).fill(process.env.HRM_Username as string);
-  await this.Gpage.getByPlaceholder(this.locators.Password).fill(process.env.HRM_Password as string);
-
-}
-
-async clickLoginButton(){
-
+await this.interactWithElement("PLACEHOLDER",this.locators.Username,"fill",process.env.HRM_Username as string);
+await this.interactWithElement("PLACEHOLDER",this.locators.Password,"fill", process.env.HRM_Password as string);
 await this.interactWithElement("CLASS",this.locators.LoginButton,"Click");
 
-}
+} else {
 
+console.log("Login page is Skipped");
+
+}
+ 
+} 
 
 public locators = {
 
