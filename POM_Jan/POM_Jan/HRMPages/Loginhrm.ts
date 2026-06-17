@@ -13,17 +13,19 @@ constructor(Lpage : Page, context : BrowserContext){
 
 }
 
-async launchApplication(){
+async launchApplication(role: string){
 
 await this.launchingURL(URLConstants.HRM_BaseUrl);
 const pageTitle = await this.Gpage.title();
 
 if(pageTitle.startsWith("OrangeHRM")){
 
-await this.interactWithElement("PLACEHOLDER",this.locators.Username,"fill",process.env.HRM_Username as string);
-await this.interactWithElement("PLACEHOLDER",this.locators.Password,"fill", process.env.HRM_Password as string);
-await this.interactWithElement("CLASS",this.locators.LoginButton,"Click");
+ const {HRM_Username,HRM_Password} = credentials[role as keyof typeof credentials];
 
+await this.interactWithElement("PLACEHOLDER",this.locators.Username,"fill",HRM_Username);
+await this.interactWithElement("PLACEHOLDER",this.locators.Password,"fill", HRM_Password);
+await this.interactWithElement("CLASS",this.locators.LoginButton,"Click");
+await this.validateElementVisibility(this.locators.DashboardText,"Dashboard");
 } else {
 
 console.log("Login page is Skipped");
@@ -43,7 +45,8 @@ public locators = {
   EmployeeSubmitButton : `[type='submit']`,
   EmployeeIDField : `//label[text()='Employee Id']//following::input[contains(@class,'oxd-input')]`,
   ClickOnDeleteIcon : `(//i[contains(@class,'oxd-icon bi-trash')])[1]`,
-  ClickYesOnDeleteConfirmation : `//i[contains(@class,'bi-trash oxd-button-icon')]`
+  ClickYesOnDeleteConfirmation : `//i[contains(@class,'bi-trash oxd-button-icon')]`,
+  DashboardText : `//h6[text()='Dashboard']`,
 
 }
 

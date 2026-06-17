@@ -9,7 +9,7 @@ testRunner.info().annotations.push(
   {type : `TestCase`, description : `Add new employee and Delete the same employee in HRM `}
 
 );
-await hrmlogin.launchApplication();
+await hrmlogin.launchApplication("USERLOGIN");
 await hrmHome.clickPIMLink();
 await hrmPim.clickAddEmployeeLink();
 await hrmPim.fillAddEmployeeForm();

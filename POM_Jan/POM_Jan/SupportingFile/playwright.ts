@@ -27,6 +27,29 @@ try {
 
 }
 
+public async validateElementVisibility(locator : string, elementName : string){
+
+ try {
+
+  const element = this.Gpage.locator(locator);
+  await this.Gpage.waitForSelector(locator,{state : `attached`,strict : true,timeout:30000,});
+  if(await element.isVisible()){
+
+    console.log(`${elementName} is visible as expected.`);
+
+  } else {
+
+    console.error(`${elementName} is not visible.`);
+  }
+  
+ } catch (error) {
+
+  throw new Error (`Error validating visibility of ${elementName}: ${error}`)
+  
+ }
+
+}
+
 public async interactWithElement(
   attribute : "LABEL" | "ID" | "TEXT" | "TITLE" | "CLASS" | "PLACEHOLDER" | "ALTTEXT", 
   locator : string,
