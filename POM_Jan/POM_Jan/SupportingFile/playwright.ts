@@ -27,7 +27,7 @@ try {
 
 }
 
-public async validateElementVisibility(locator : string, elementName : string){
+async validateElementVisibility(locator : string, elementName : string){
 
  try {
 
@@ -47,6 +47,34 @@ public async validateElementVisibility(locator : string, elementName : string){
   throw new Error (`Error validating visibility of ${elementName}: ${error}`)
   
  }
+
+}
+
+public async wait (waitType : "minWait" | "mediumWait" | "maxWait"){
+
+  try {
+
+    switch(waitType){
+    case "minWait":
+      await this.Gpage.waitForTimeout(3000);
+      break;
+    case "mediumWait":
+      await this.Gpage.waitForTimeout(5000);
+      break;
+    case "maxWait":
+      await this.Gpage.waitForTimeout(10000);
+      break;
+    default :
+      console.log("Invalid wait type provided.");
+      throw new Error(`Invalid wait type: ${waitType}`);
+    }
+    
+  } catch (error) {
+
+    throw new Error(`Error during wait:, ${error}`);
+    
+  }
+
 
 }
 
