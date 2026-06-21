@@ -21,7 +21,7 @@ try {
  } catch (error) {
   
   console.log(`Error loading the page at ${URL}`);
-  throw new Error (`Failed to load the page at ${URL}`);
+  throw new Error (`Failed to load the page a ${URL}`);
  }
 
 
