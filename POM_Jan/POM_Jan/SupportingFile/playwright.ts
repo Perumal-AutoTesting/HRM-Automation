@@ -113,7 +113,7 @@ switch(attribute){
       await this.Gpage.getByText(locator).click();
     } else {
 
-      throw new Error ("The 'fill' action is not supported for 'TEXT' attributes.");
+      throw new Error ("The 'fill' action is not supported  for 'TEXT' attributes.");
     }
   break;
 
