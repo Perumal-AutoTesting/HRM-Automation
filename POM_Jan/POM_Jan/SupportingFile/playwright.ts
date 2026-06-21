@@ -27,6 +27,28 @@ try {
 
 }
 
+async click(locator : string, name : string, type : string){
+
+  await test.step(`The ${name} ${type} is Clicked`, async() => {
+
+  await this.Gpage.waitForSelector(locator,{state:`visible`,strict:true});
+  await this.Gpage.locator(locator).click();
+
+  });
+}
+
+async type (locator : string, name : string, data : string){
+
+  await test.step(`Textbox ${name} filled with data: ${data}`, async () => {
+  
+    await this.Gpage.locator(locator).clear();
+    await this.Gpage.locator(locator).fill(data);
+
+
+  })
+
+}
+
 async validateElementVisibility(locator : string, elementName : string){
 
  try {

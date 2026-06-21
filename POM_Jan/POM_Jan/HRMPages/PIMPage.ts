@@ -1,21 +1,20 @@
 import {faker} from "@faker-js/faker";
-import  {HomePage} from "./HomePage";
 import {empID} from "../Data/testData";
-import  {LoginPage} from "./Loginhrm"
 import {locators} from "../HRMPages/selectors"
+import {PlaywrightWrapper} from "../SupportingFile/playwright";
 
-export class pimPage extends HomePage{
+export class pimPage extends PlaywrightWrapper{
 
   async clickAddEmployeeLink(){
 
-    await this.Gpage.getByRole(`link`, {name:`Add Employee`}).click();
+     await this.click(locators.AddEmployee, "AddEmployee", "Button");
 
   }
 
    async fillAddEmployeeForm(){
 
-    await this.Gpage.getByPlaceholder(locators.firstName).fill(faker.person.firstName());
-    await this.Gpage.getByPlaceholder(locators.lastName).fill(faker.person.lastName());
+    await this.type(locators.firstName,"FirstName",faker.person.firstName());
+    await this.type(locators.lastName,"lastName",faker.person.lastName());
     const EmployeeID = await this.Gpage.locator(locators.EmployeeID);
     await EmployeeID.clear();
     empID === faker.string.numeric(4);
@@ -25,13 +24,14 @@ export class pimPage extends HomePage{
 
    async clickAddEmployeeSubmitButton(){
 
-    await this.Gpage.locator(locators.EmployeeSubmitButton).click();
+    await this.click(locators.EmployeeSubmitButton,"EmployeeSubmitButton","Button");
+   
   } 
 
 
   async clickEmployeeList(){
 
-   await this.Gpage.getByRole(`link`, {name:`Employee List`}).click();
+    await this.click(locators.EmployeeList,"EmployeeList","Link");
 
 }
 
@@ -43,17 +43,16 @@ async enterEmployeeID(){
 
 async clickSearchButton(){
 
-  await this.Gpage.getByRole(`button`, {name:`Search`}).click();
+  await this.click(locators.EmployeeSearch,"Search","Button");
 
 }
 
 
 async clickOnDeleteIcon(){
 
-  await this.Gpage.locator(locators.ClickOnDeleteIcon).click();
-  await this.Gpage.locator(locators.ClickYesOnDeleteConfirmation).click();
+  await this.click(locators.ClickOnDeleteIcon,"DeleteIcon","Icon");
+  await this.click(locators.ClickYesOnDeleteConfirmation,"DeleteConfirmation","Button");
 
-  
 }
 
 }
