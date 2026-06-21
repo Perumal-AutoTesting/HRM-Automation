@@ -61,7 +61,7 @@ async validateElementVisibility(locator : string, elementName : string){
 
   } else {
 
-    console.error(`${elementName} is not visible.`);
+    console.error(`${elementName} is not  visible.`);
   }
   
  } catch (error) {
