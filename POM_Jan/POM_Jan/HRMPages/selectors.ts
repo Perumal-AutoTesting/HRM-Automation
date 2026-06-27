@@ -12,8 +12,10 @@ export let locators = {
   ClickOnDeleteIcon : `(//i[contains(@class,'oxd-icon bi-trash')])[1]`,
   ClickYesOnDeleteConfirmation : `//i[contains(@class,'bi-trash oxd-button-icon')]`,
   DashboardText : `//h6[text()='Dashboard']`,
-  AddEmployee : `//i[contains(@class,'bi-plus')]`,
+  AddIcon : `//i[contains(@class,'bi-plus')]`,
   EmployeeList : `//a[text()='Employee List']`,
-  EmployeeSearch : `[type="submit"]`
+  EmployeeSearch : `[type="submit"]`,
+  ClaimLink : `//a[contains(@href,'claim')]`,
+  PIMLink : `//a[contains(@href,'viewPim')]`
 
 }

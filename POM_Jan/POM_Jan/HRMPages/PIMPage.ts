@@ -7,7 +7,7 @@ export class pimPage extends PlaywrightWrapper{
 
   async clickAddEmployeeLink(){
 
-     await this.click(locators.AddEmployee, "AddEmployee", "Button");
+     await this.click(locators.AddIcon, "AddEmployee", "Button");
 
   }
 

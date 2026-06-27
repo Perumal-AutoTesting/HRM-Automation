@@ -2,6 +2,7 @@
 import {pimPage} from "../HRMPages/PIMPage"
 import {LoginPage} from "../HRMPages/Loginhrm";
 import { HomePage } from "../HRMPages/HomePage";
+import {claimPage} from "../HRMPages/ClaimPage";
 import {test as baseTest} from "@playwright/test";
 
 type myFixture = {
@@ -9,6 +10,8 @@ type myFixture = {
    hrmPim : pimPage
    hrmlogin : LoginPage
    hrmHome : HomePage
+   hrmClaim : claimPage
+
 
 }
 export const testRunner =  baseTest.extend<myFixture>( {
@@ -31,6 +34,12 @@ export const testRunner =  baseTest.extend<myFixture>( {
   const hrmHome = new HomePage(page,context);
   await use(hrmHome);
 
+ },
+
+ hrmClaim : async ({page,context}, use) => {
+
+  const hrmClaim = new claimPage(page,context);
+  await use(hrmClaim);
 
  }
 

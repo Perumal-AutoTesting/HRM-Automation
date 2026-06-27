@@ -1,12 +1,21 @@
 import {faker} from "@faker-js/faker";
-import  {LoginPage} from "./Loginhrm"
+import {locators} from "../HRMPages/selectors"
+import {PlaywrightWrapper} from "../SupportingFile/playwright";
 
-export class HomePage extends LoginPage {
+export class HomePage extends PlaywrightWrapper {
 
  async clickPIMLink(){
 
-    await this.Gpage.getByRole(`link`, {name:`PIM`}).click();
+    await this.click(locators.PIMLink,"PIM","Link");
 
   }
+
+
+  async clickClaimLink(){
+
+    await this.click(locators.ClaimLink,"Claim","Link");
+
+  }
+
 
 }
