@@ -16,6 +16,14 @@ export let locators = {
   EmployeeList : `//a[text()='Employee List']`,
   EmployeeSearch : `[type="submit"]`,
   ClaimLink : `//a[contains(@href,'claim')]`,
-  PIMLink : `//a[contains(@href,'viewPim')]`
+  PIMLink : `//a[contains(@href,'viewPim')]`,
+
+  ClaimPage : {
+
+    eventDropdown : `(//div[@class='oxd-select-wrapper'])[1]`,
+    dropdownValueSelector : (value : string) => `//span[text()='${value}']`,
+    currencyDropdown : `(//div[@class='oxd-select-wrapper'])[2]`,
+
+  }
 
 }

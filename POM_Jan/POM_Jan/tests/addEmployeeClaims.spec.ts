@@ -12,6 +12,8 @@ testRunner.info().annotations.push(
 await hrmlogin.launchApplication("USERLOGIN");
 await hrmHome.clickClaimLink();
 await hrmClaim.clickAssignClaim();
+await hrmClaim.event("Accommodation");
+await hrmClaim.currency("Bermudian Dollar");
 
 
 
