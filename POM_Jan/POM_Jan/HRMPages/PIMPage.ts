@@ -1,7 +1,7 @@
-import {faker} from "@faker-js/faker";
 import {empID} from "../Data/testData";
 import {locators} from "../HRMPages/selectors"
 import {PlaywrightWrapper} from "../SupportingFile/playwright";
+import {FakerData} from "../SupportingFile/fakerUtils";
 
 export class pimPage extends PlaywrightWrapper{
 
@@ -13,11 +13,11 @@ export class pimPage extends PlaywrightWrapper{
 
    async fillAddEmployeeForm(){
 
-    await this.type(locators.firstName,"FirstName",faker.person.firstName());
-    await this.type(locators.lastName,"lastName",faker.person.lastName());
+    await this.type(locators.firstName,"FirstName",FakerData.getFirstName());
+    await this.type(locators.lastName,"lastName",FakerData.getLastName());
     const EmployeeID = await this.Gpage.locator(locators.EmployeeID);
     await EmployeeID.clear();
-    empID === faker.string.numeric(4);
+    empID === FakerData.getEmployeeID();
     await EmployeeID.fill(empID);
 
   }

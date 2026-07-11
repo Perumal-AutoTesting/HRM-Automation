@@ -20,9 +20,11 @@ export let locators = {
 
   ClaimPage : {
 
+    employeeName : `input[placeholder="Type for hints..."]`,
     eventDropdown : `(//div[@class='oxd-select-wrapper'])[1]`,
     dropdownValueSelector : (value : string) => `//span[text()='${value}']`,
     currencyDropdown : `(//div[@class='oxd-select-wrapper'])[2]`,
+    remarks : `//textarea`
 
   }
 

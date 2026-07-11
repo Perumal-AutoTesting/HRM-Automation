@@ -54,7 +54,7 @@ async validateElementVisibility(locator : string, elementName : string){
  try {
 
   const element = this.Gpage.locator(locator);
-  await this.Gpage.waitForSelector(locator,{state : `attached`,strict : true,timeout:30000,});
+  await this.Gpage.waitForSelector(locator,{state : `attached`,strict : true,timeout:30000});
   if(await element.isVisible()){
 
     console.log(`${elementName} is visible as expected.`);
@@ -100,11 +100,27 @@ public async wait (waitType : "minWait" | "mediumWait" | "maxWait"){
 
 }
 
+/**  Types into the specified textbox, clears existing text, and presses <ENTER>.*/
+
+public async fillAndArrowDownAndEnter(locator : string, name : String, data : string ){
+
+    await test.step(`Textbox ${name} filled with data: ${data}`, async() => {
+
+      await this.Gpage.locator(locator).clear();
+      await this.Gpage.locator(locator).fill(data);
+      await this.wait("minWait");
+      await this.Gpage.focus(locator);
+      await this.Gpage.locator(locator).press('ArrowDown');
+      await this.Gpage.locator(locator).press('Enter');
+
+    })
+}
+
 public async interactWithElement(
   attribute : "LABEL" | "ID" | "TEXT" | "TITLE" | "CLASS" | "PLACEHOLDER" | "ALTTEXT", 
   locator : string,
-   action : "Click" | "fill", 
-   data : string = "") : Promise <void>{
+  action : "Click" | "fill", 
+  data : string = "") : Promise <void>{
 
 switch(attribute){
 

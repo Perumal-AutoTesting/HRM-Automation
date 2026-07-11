@@ -25,7 +25,7 @@ await this.interactWithElement("PLACEHOLDER",locators.Username,"fill",HRM_Userna
 await this.interactWithElement("PLACEHOLDER",locators.Password,"fill", HRM_Password);
 await this.interactWithElement("CLASS",locators.LoginButton,"Click");
 await this.wait('mediumWait');
-await this.validateElementVisibility(locators.DashboardText,"Dashboard1");
+await this.validateElementVisibility(locators.DashboardText,"Dashboard");
 } else {
 
 console.log("Login page is Skipped");

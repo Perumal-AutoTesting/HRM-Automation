@@ -1,4 +1,3 @@
-import {faker} from "@faker-js/faker";
 import {locators} from "../HRMPages/selectors"
 import {PlaywrightWrapper} from "../SupportingFile/playwright";
 
