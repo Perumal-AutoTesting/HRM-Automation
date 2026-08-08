@@ -3,6 +3,7 @@ import {pimPage} from "../HRMPages/PIMPage"
 import {LoginPage} from "../HRMPages/Loginhrm";
 import { HomePage } from "../HRMPages/HomePage";
 import {claimPage} from "../HRMPages/ClaimPage";
+import {ForgotPasswordPage} from "../HRMPages/ForgotPasswordPage";
 import {test as baseTest} from "@playwright/test";
 
 type myFixture = {
@@ -11,7 +12,7 @@ type myFixture = {
    hrmlogin : LoginPage
    hrmHome : HomePage
    hrmClaim : claimPage
-
+   hrmForgotPassword : ForgotPasswordPage
 
 }
 export const testRunner =  baseTest.extend<myFixture>( {
@@ -40,6 +41,13 @@ export const testRunner =  baseTest.extend<myFixture>( {
 
   const hrmClaim = new claimPage(page,context);
   await use(hrmClaim);
+
+ },
+
+ hrmForgotPassword : async ({page,context}, use) => {
+
+  const hrmForgotPassword = new ForgotPasswordPage(page,context);
+  await use(hrmForgotPassword);
 
  }
 

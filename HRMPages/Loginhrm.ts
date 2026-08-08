@@ -1,16 +1,9 @@
-import { Page,BrowserContext} from "@playwright/test";
 import {PlaywrightWrapper} from "../SupportingFile/playwright";
 import {URLConstants} from "../Constants/urlConstants";
 import {credentials} from "../Constants/credentialsData";
 import {locators} from "../HRMPages/selectors"
 
 export class LoginPage extends PlaywrightWrapper{
-
-constructor(Lpage : Page, context : BrowserContext){
-
- super(Lpage,context);
-
-}
 
 async launchApplication(role: string){
 
@@ -32,7 +25,12 @@ console.log("Login page is Skipped");
 
 }
  
-} 
+}
+
+async forgotPassword(){
+
+  await this.click(locators.ForgotPasswordPage.forgotpasswordLink,"Forgot your password? ","Link");
+}
 
 }
 
