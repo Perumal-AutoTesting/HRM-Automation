@@ -31,7 +31,9 @@ export let locators = {
   ForgotPasswordPage : {
 
     forgotpasswordLink : `p.orangehrm-login-forgot-header`,
-    forgotpasswordtitle : `h6.orangehrm-forgot-password-title`
+    forgotpasswordtitle : `h6.orangehrm-forgot-password-title`,
+    resetPassworButton : `.orangehrm-forgot-password-button--reset`,
+    fieldErrorMessage : `.oxd-input-field-error-message`
 
   }
 

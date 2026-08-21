@@ -9,7 +9,12 @@ export class ForgotPasswordPage extends PlaywrightWrapper {
     await this.validateElementVisibility(locators.ForgotPasswordPage.forgotpasswordtitle,"ForgotPassword Title")
     await this.interactWithElement("TEXT"," Cancel ","Click");
     
+  }
 
+  async forgotpasswordSubmitButton(){
+
+    await this.interactWithElement("CLASS",locators.ForgotPasswordPage.resetPassworButton,"Click");
+    await this.validateElementVisibility(locators.ForgotPasswordPage.fieldErrorMessage,"Required");
 
   }
 
